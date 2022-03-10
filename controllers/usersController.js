@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
+const jwt = require('jsonwebtoken');
 
 module.exports = {
     get: {
@@ -11,8 +12,36 @@ module.exports = {
         }
     },
     post: {
-        login(req, res) {
+        async login(req, res) {
+            const { email, password } = req.body;
 
+            const obj = {
+                page: '',
+                themeColor: 'bg-light',
+                email,
+                password,
+            }
+
+            if (email == '' || password == '') {
+                return res.render('users/login', { ...obj, error: 'Всички полета са задължителни' });
+            }
+
+            const user = await User.findOne({ email });
+            if (!user) {
+                return res.render('users/login', { ...obj, error: 'Невалиден имеил или парола' });
+            }
+
+            const isCorrectPassword = await bcrypt.compare(password, user.password);
+            if (!isCorrectPassword) {
+                return res.render('users/login', { ...obj, error: 'Невалиден имеил или парола' });
+            }
+
+            const token = jwt.sign({
+                email
+            }, process.env.JWT_SECRET, { expiresIn: '1h' });
+
+            res.cookie('user', token, { maxAge: 1000 * 60 * 60 });
+            res.redirect('/');
         },
 
         async register(req, res) {
@@ -33,6 +62,12 @@ module.exports = {
 
             if (password != confirmPassword) {
                 return res.render('users/register', { ...obj, error: 'Паролите не съвпадат' });
+            }
+
+            const isExists = await User.findOne({ email });
+
+            if (isExists) {
+                return res.render('users/register', { ...obj, error: 'Вече има потребител с този имейл' });
             }
 
             const salt = await bcrypt.genSalt(10);
