@@ -40,7 +40,7 @@ module.exports = {
                 email
             }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-            res.cookie('user', token, { maxAge: 1000 * 60 * 60 });
+            res.cookie('userToken', token, { maxAge: 1000 * 60 * 60 });
             res.redirect('/');
         },
 
