@@ -4,19 +4,19 @@
     <form class="mw-50 mx-auto" action="/users/register" method="post">
         <div class="mb-3">
             <label for="username" class="form-label">Потребител</label>
-            <input type="username" class="form-control" name="username" id="username">
+            <input type="username" value="{{username}}" class="form-control" name="username" id="username">
         </div>
         <div class="mb-3">
             <label for="email" class="form-label">Email адрес</label>
-            <input type="email" class="form-control" name="email" id="email">
+            <input type="email" value="{{email}}" class="form-control" name="email" id="email">
         </div>
         <div class="mb-3">
             <label for="password" class="form-label">Парола</label>
-            <input type="password" class="form-control" name="password" id="password">
+            <input type="password" value="{{password}}" class="form-control" name="password" id="password">
         </div>
         <div class="mb-3">
             <label for="confirm-password" class="form-label">Повтори паролата</label>
-            <input type="password" class="form-control" name="confirmPassword" id="confirm-password">
+            <input type="password" value="{{confirmPassword}}" class="form-control" name="confirmPassword" id="confirm-password">
         </div>
         <button type="submit" class="btn btn-primary">Регистрация</button>
     </form>
