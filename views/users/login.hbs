@@ -1,0 +1,15 @@
+<div class="container form-container p-5 mt-5 dcs">
+    <h2 class="text-center">Вход</h2>
+    {{> error-messages}}
+    <form class="mw-50 mx-auto" action="/users/login" method="post">
+        <div class="mb-3">
+            <label for="email" class="form-label">Email адрес</label>
+            <input type="email" class="form-control" name="email" id="email">
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Парола</label>
+            <input type="password" class="form-control" name="password" id="password">
+        </div>
+        <button type="submit" class="btn btn-primary">Вход</button>
+    </form>
+</div>

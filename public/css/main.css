@@ -1,0 +1,19 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.form-container {
+    max-width: 600px;
+}
+
+.dark .dcs {
+    background-color: #2f2f2f;
+    color: #f5f5f5;
+}
+
+.light .dcs {
+    background-color: #f5f5f5;
+    color: #2f2f2f;
+}
