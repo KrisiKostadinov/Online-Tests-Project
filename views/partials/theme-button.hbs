@@ -1,5 +1,6 @@
 <label class="toggle" for="uniqueID">
-    <input type="checkbox" onclick="changeColor(event)" class="toggle__input" id="uniqueID" />
+    <input id="theme-color-user-email" type="hidden" value="{{user.email}}">
+    <input type="checkbox" onclick="changeColor()" class="toggle__input" id="uniqueID" {{#ifEquals user.themeColor 'dark'}}checked{{/ifEquals }} />
     <span class="toggle-track">
         <span class="toggle-indicator">
             <span class="checkMark">
@@ -14,12 +15,13 @@
 </label>
 
 <script>
-    function changeColor(event) {
+    function changeColor() {
         $.ajax({
             type: "POST",
             url: '/themeColor',
-            data: '',
+            data: { email: $('#theme-color-user-email').val() },
             success: () => {
+                console.log(0);
                 location.reload(true);
             }
         });

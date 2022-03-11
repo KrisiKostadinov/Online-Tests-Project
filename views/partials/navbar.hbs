@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-lg navbar-light dcs">
+    <div class="container">
+        <a class="navbar-brand" href="/">Решавай онлайн</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-between" id="navbar">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link custom-link" href="/">Начало</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                {{#if user }}
+                <li class="nav-item">
+                    <a class="nav-link custom-link" href="/users/account">Здравей, {{ user.name }}!</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link custom-link" href="/users/logout">Изход</a>
+                </li>
+                {{else}}
+                <li class="nav-item">
+                    <a class="nav-link custom-link" href="/users/register">Регистрация</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link custom-link" href="/users/login">Вход</a>
+                </li>
+                {{/if }}
+            </ul>
+        </div>
+    </div>
+</nav>

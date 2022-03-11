@@ -9,6 +9,13 @@ module.exports = {
         },
         register(req, res) {
             res.render('users/register', { page: 'Регистрация', themeColor: 'bg-light' });
+        },
+        logout(req, res) {
+            res.clearCookie('userToken');
+            res.redirect('/users/login');
+        },
+        account(req, res) {
+            res.render('users/account', { page: 'Моят профил' });
         }
     },
     post: {
@@ -37,7 +44,9 @@ module.exports = {
             }
 
             const token = jwt.sign({
-                email
+                email,
+                name: user.username,
+                themeColor: user.themeColor,
             }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
             res.cookie('userToken', token, { maxAge: 1000 * 60 * 60 });
@@ -55,7 +64,7 @@ module.exports = {
                 password,
                 confirmPassword,
             }
-
+            
             if (username == '' || email == '' || password == '') {
                 return res.render('users/register', { ...obj, error: 'Всички полета са задължителни' });
             }

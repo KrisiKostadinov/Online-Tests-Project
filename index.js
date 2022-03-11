@@ -20,7 +20,7 @@ app.set('view engine', '.hbs');
 app.set('views', './views');
 
 app.use(cookieParser());
-app.use(bodyParser());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/', require('./routes/indexRoutes'));
 app.use('/users', require('./routes/usersRoutes'));
