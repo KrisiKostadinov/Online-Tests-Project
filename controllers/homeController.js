@@ -5,12 +5,12 @@ const jwt = require("jsonwebtoken");
 module.exports = {
     get: {
         home(req, res) {
-            res.render('home', { page: 'Home', title: 'Hello' });
+            // res.render('home', { page: 'Home', title: 'Hello' });
+            res.redirect('/categories/all');
         },
     },
     post: {
         async color(req, res) {
-            console.log(req.body.email);
             const user = await User.findOne({ email: req.body.email });
 
             const updatedUser = await User.findOneAndUpdate({ email: req.body.email }, {

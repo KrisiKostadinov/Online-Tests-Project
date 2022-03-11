@@ -24,5 +24,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/', require('./routes/indexRoutes'));
 app.use('/users', require('./routes/usersRoutes'));
+app.use('/categories', require('./routes/categoryRoutes'));
 
 app.listen(port, () => console.log('Server started on port: ' + port));

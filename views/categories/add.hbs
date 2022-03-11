@@ -1,0 +1,11 @@
+<div class="container form-container p-5 mt-5 dcs">
+    <h2 class="text-center">Нова категория</h2>
+    {{> error-messages}}
+    <form class="mw-50 mx-auto" action="/categories/add" method="post">
+        <div class="mb-3">
+            <label for="name" class="form-label">Име на категорията</label>
+            <input type="text" class="form-control" name="name" id="name">
+        </div>
+        <button type="submit" class="btn btn-primary">Създай</button>
+    </form>
+</div>

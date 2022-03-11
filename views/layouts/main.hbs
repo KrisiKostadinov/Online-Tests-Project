@@ -13,14 +13,16 @@
     <title>{{ page }}</title>
 </head>
 
-<body class="{{#ifEquals user.themeColor 'light'}} bg-light {{else}} bg-dark {{/ifEquals}}">
+<body class="{{#ifEquals user.themeColor 'dark'}} bg-dark {{else}} bg-light {{/ifEquals}}">
 
-    <div class="{{#ifEquals user.themeColor 'light'}} light {{else}} dark {{/ifEquals}}">
+    <div class="{{#ifEquals user.themeColor 'dark'}} dark {{else}} light {{/ifEquals}}">
         {{> navbar }}
         {{{ body }}}
     </div>
 
+    {{#if user}}
     {{> theme-button }}
+    {{/if }}
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
