@@ -28,7 +28,18 @@ const loggedIn = (req, res, next) => {
     next();
 }
 
+const isAdministrator = (req, res, next) => {
+    const user = res.locals.user;
+
+    if (!user.roles.includes('administrator')) {
+        return res.redirect('/');
+    }
+
+    next();
+}
+
 module.exports = {
     loggedOut,
     loggedIn,
+    isAdministrator
 }

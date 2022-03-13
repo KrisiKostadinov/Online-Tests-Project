@@ -15,6 +15,11 @@ const UserSchema = new Schema({
         type: String,
         required: true,
     },
+    roles: [{
+        type: String,
+        enum: ['administrator', 'user'],
+        default: ['user']
+    }],
     themeColor: {
         type: String,
         default: 'light'

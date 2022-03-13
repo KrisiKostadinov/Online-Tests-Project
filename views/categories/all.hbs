@@ -2,10 +2,35 @@
     <div class="row mt-5">
         {{#each categories }}
         <div class="col-md-4">
-            <div class="list-group-item p-3 mb-4 dcs">
+            <div class="list-group-item p-3 mb-4 dcs d-flex justify-content-between" id="{{ _id }}">
                 <a href="#" class="nav-link custom-link">{{ name }}</a>
+                <button class="btn-danger" onclick="confirmRemove(event)">Изтрии</button>
             </div>
         </div>
         {{/each }}
     </div>
 </div>
+
+<script>
+    function confirmRemove(event) {
+        const target = $(event.target.parentElement);
+        const id = $(event.target.parentElement).attr('id');
+
+        if (confirm('Наистина ли искате да изтриете тази категория?')) {
+            $.ajax({
+                url: '/categories/remove',
+                type: 'post',
+                data: {
+                    id: id
+                },
+                success: function () {
+                    $(target).fadeOut(1000, function() {
+                        $(this).remove();
+                        location.reload();
+                    });
+                }
+            });
+        }
+
+    }
+</script>
