@@ -10,14 +10,21 @@ module.exports = {
 
         async list(req, res) {
             const tests = await Test.find().lean();
+            if(tests.length === 0) {
+                return res.render('tests/all', { page: 'Тестове ', error: 'Няма тестове за показване.' });
+            }
             res.render('tests/all', { page: 'Тестове ', tests });
         },
 
         async byId(req, res) {
             const { id } = req.params;
 
-            const test = await Test.findById(id).lean().populate('category');
-            res.render('tests/details', { page: test.title, test });
+            try {
+                const test = await Test.findById(id).lean().populate('category');
+                res.render('tests/details', { page: test.title, test });
+            } catch (error) {
+                res.render('404');
+            }
         }
     },
 
@@ -29,6 +36,15 @@ module.exports = {
             }
             const test = await Test.create({ title, categoryId });
             res.redirect('/tests/details/' + test._id);
+        }
+    },
+
+    remove: {
+        async byId(req, res) {
+            const { id } = req.params;
+
+            await Test.findByIdAndDelete(id);
+            res.status(200).send();
         }
     }
 }

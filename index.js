@@ -26,5 +26,6 @@ app.use('/', require('./routes/indexRoutes'));
 app.use('/users', require('./routes/usersRoutes'));
 app.use('/categories', require('./routes/categoryRoutes'));
 app.use('/tests', require('./routes/testsRoutes'));
+app.use('*', (req, res) => res.render('404'));
 
 app.listen(port, () => console.log('Server started on port: ' + port));
