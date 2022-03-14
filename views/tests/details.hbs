@@ -1,0 +1,15 @@
+<div class="container mt-5 p-5 dcs">
+    <h2>{{ test.title }}</h2>
+    <ul>
+        {{#each test.answers }}
+        <li>
+            {{ content }}
+        </li>
+        {{/each }}
+    </ul>
+    <a href="#">{{ test.categoryId.name }}</a>
+    {{#if user.isAdministrator }}
+    <a href="/tests/questions/create/{{test._id}}" class="btn btn-primary">Добави въпрос</a>
+    <a href="/tests/remove/{{test._id}}" class="btn btn-danger">Изтрии теста</a>
+    {{/if }}
+</div>

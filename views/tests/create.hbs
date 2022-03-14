@@ -1,0 +1,20 @@
+<div class="container form-container p-5 mt-5 dcs">
+    <h2 class="text-center">Нов тест</h2>
+    {{> error-messages}}
+    <form action="/tests/create" method="post" class="mw-50 mx-auto">
+        <div class="mb-3">
+            <label for="title" class="form-label">Име на теста</label>
+            <input type="text" class="form-control" name="title" id="title">
+        </div>
+        <div class="mb-3">
+            <label for="category" class="form-label">Категория</label>
+            <select name="categoryId" class="form-control" id="category">
+                <option value="">Избери</option>
+                {{#each categories }}
+                <option value="{{ _id }}">{{ name }}</option>
+                {{/each }}
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Следваща стъпка</button>
+    </form>
+</div>
