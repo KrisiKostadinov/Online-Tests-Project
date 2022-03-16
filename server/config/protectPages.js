@@ -41,7 +41,7 @@ const isAdministrator = (req, res, next) => {
 const checkIsAdmin = (req, res, next) => {
     const user = res.locals.user;
     
-    if (!user.roles.includes('administrator')) {
+    if (!user?.roles?.includes('administrator')) {
         res.locals.user.isAdministrator = false;
     } else {
         res.locals.user.isAdministrator = true;

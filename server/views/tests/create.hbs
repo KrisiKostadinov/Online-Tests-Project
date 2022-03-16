@@ -4,11 +4,11 @@
     <form action="/tests/create" method="post" class="mw-50 mx-auto">
         <div class="mb-3">
             <label for="title" class="form-label">Име на теста</label>
-            <input type="text" class="form-control" name="title" id="title">
+            <input type="text" autofocus value="{{ title }}" class="form-control" name="title" id="title">
         </div>
         <div class="mb-3">
             <label for="category" class="form-label">Категория</label>
-            <select name="categoryId" class="form-control" id="category">
+            <select name="categoryId" value="{{ categoryId }}" class="form-control" id="category">
                 <option value="">Избери</option>
                 {{#each categories }}
                 <option value="{{ _id }}">{{ name }}</option>

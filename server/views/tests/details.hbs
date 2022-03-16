@@ -1,0 +1,34 @@
+<div class="container mt-5 p-4 dcs">
+    <h2>{{ test.title }}</h2>
+    <ul>
+        {{#each test.answers }}
+        <li>
+            {{ content }}
+        </li>
+        {{/each }}
+    </ul>
+    <div class="d-flex align-items-center justify-content-between">
+        <a class="text-decoration-none" href="#">{{ test.category.name }}</a>
+        {{#if user.isAdministrator }}
+        <div>
+            <a href="/tests/questions/create/{{test._id}}" class="btn btn-primary">Добави въпрос</a>
+            <button id="{{ test._id }}" href="/tests/remove/{{test._id}}" onclick="deleteTest(event)"
+                class="btn btn-danger">Изтрии теста</button>
+        </div>
+        {{/if }}
+    </div>
+</div>
+
+<script>
+    function deleteTest(event) {
+        const id = event.target.id;
+        console.log(id);
+        $.ajax({
+            url: '/tests/remove/' + id,
+            method: 'delete',
+            success: () => {
+                window.location.href = '/tests/all';
+            }
+        });
+    }
+</script>

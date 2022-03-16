@@ -22,7 +22,7 @@ module.exports = {
             const { name } = req.body;
 
             if(name == '') {
-                return res.render('categories/all', { page: 'Нова категория', error: 'Това поле е задължително' });
+                return res.render('categories/add', { page: 'Нова категория', error: 'Това поле е задължително' });
             }
 
             await Category.create({ name });

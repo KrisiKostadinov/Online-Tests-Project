@@ -8,9 +8,12 @@ const TestSchema = new Schema({
         required: true,
     },
     questions: [{
+        _id: String,
         title: String,
         answers: [{
-            type: String,
+            _id: String,
+            content: String,
+            isCorrect: Boolean,
         }]
     }],
     category: {
