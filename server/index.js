@@ -31,8 +31,7 @@ app.use('/', require('./routes/indexRoutes'));
 app.use('/users', require('./routes/usersRoutes'));
 app.use('/categories', require('./routes/categoryRoutes'));
 app.use('/tests', require('./routes/testsRoutes'));
-
-app.use('/api/users', require('./api/routes/adminRoutes'));
+app.use('/questions', require('./routes/questionsRoutes'));
 
 app.use('*', (req, res) => res.render('404'));
 

@@ -7,6 +7,10 @@
             <input type="text" autofocus value="{{ title }}" class="form-control" name="title" id="title">
         </div>
         <div class="mb-3">
+            <label for="description" class="form-label">Описание на теста</label>
+            <textarea class="form-control" name="description" rows="10" id="description">{{ description }}</textarea>
+        </div>
+        <div class="mb-3">
             <label for="category" class="form-label">Категория</label>
             <select name="categoryId" value="{{ categoryId }}" class="form-control" id="category">
                 <option value="">Избери</option>

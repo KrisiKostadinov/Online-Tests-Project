@@ -7,14 +7,12 @@ const TestSchema = new Schema({
         type: String,
         required: true,
     },
+    description: {
+        type: String
+    },
     questions: [{
-        _id: String,
-        title: String,
-        answers: [{
-            _id: String,
-            content: String,
-            isCorrect: Boolean,
-        }]
+        type: ObjectId,
+        ref: 'Question'
     }],
     category: {
         type: ObjectId,

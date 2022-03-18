@@ -1,0 +1,32 @@
+<h1 class="text-center">{{ test.title }}</h1>
+<div class="container form-container p-5 mt-5 dcs">
+    <h2 class="text-center">Нов въпрос</h2>
+    {{> error-messages}}
+    <form id="form" action="/questions/create/{{ test._id }}" method="post" class="mw-50 mx-auto">
+        <div class="mb-3">
+            <label for="title" class="form-label">Заглавие на въпроса</label>
+            <input type="text" autofocus value="{{ title }}" class="form-control" name="title" id="title">
+        </div>
+        <button type="submit" class="btn btn-primary">Създай въпрос</button>
+    </form>
+
+    {{#if questions }}
+    <h2 class="py-4">Въпроси</h2>
+    <ul>
+        {{#each questions }}
+        <li>
+            <a href="/questions/answers/create/{{ _id }}">{{ title }}</a>
+            {{#if answers }}
+            {{#each answers }}
+            <ul>
+                <li>
+                    {{ content }}{{#if isCorrect }}<span class="badge badge-primary bg-primary">Верен</span>{{/if }}
+                </li>
+            </ul>
+            {{/each }}
+            {{/if }}
+        </li>
+        {{/each }}
+    </ul>
+    {{/if }}
+</div>

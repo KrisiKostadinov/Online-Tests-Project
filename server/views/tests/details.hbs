@@ -1,18 +1,13 @@
 <div class="container mt-5 p-4 dcs">
     <h2>{{ test.title }}</h2>
-    <ul>
-        {{#each test.answers }}
-        <li>
-            {{ content }}
-        </li>
-        {{/each }}
-    </ul>
+    <p>{{ test.description }}</p>
+    <p>Тестът се състои от {{ test.questions.length }} въпроса.</p>
     <div class="d-flex align-items-center justify-content-between">
         <a class="text-decoration-none" href="#">{{ test.category.name }}</a>
         {{#if user.isAdministrator }}
         <div>
-            <a href="/tests/questions/create/{{test._id}}" class="btn btn-primary">Добави въпрос</a>
-            <button id="{{ test._id }}" href="/tests/remove/{{test._id}}" onclick="deleteTest(event)"
+            <a href="/questions/create/{{test._id}}" class="btn btn-primary">Добави въпрос</a>
+            <button id="{{ test._id }}" href="/questions/remove/{{test._id}}" onclick="deleteTest(event)"
                 class="btn btn-danger">Изтрии теста</button>
         </div>
         {{/if }}
